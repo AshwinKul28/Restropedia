@@ -16,13 +16,13 @@
  // 4. WIT_TOKEN=your_access_token FB_APP_SECRET=your_app_secret FB_PAGE_TOKEN=your_page_token node examples/messenger.js
  // 5. Subscribe your page to the Webhooks using verify_token and `https://<your_ngrok_io>/webhook` as callback URL.
  // 6. Talk to your bot on Messenger!
- 
+ const { wordsToNumbers } = require('words-to-numbers');
  const bodyParser = require('body-parser');
 const { SSL_OP_EPHEMERAL_RSA } = require('constants');
  const crypto = require('crypto');
  const express = require('express');
  const fetch = require('node-fetch');
- const response = require('./response.json')
+ const response_file = require('./response.json')
 
  const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
  const ffmpeg = require('fluent-ffmpeg');
@@ -163,15 +163,20 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
             var file = fs.createWriteStream(path);
             response.pipe(file);
 
+
+            setTimeout(() => {
               ffmpeg()
-                .input('/Users/ashwin/Downloads/media/user_voice.mp4')
-                .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
-                .run()
+              .input('/Users/ashwin/Downloads/media/user_voice.mp4')
+              .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+              .run()
+            }, 3000)
+
         }
         request.setTimeout(60000, function() { // if after 60s file not downlaoded, we abort a request 
             request.abort();
         })
-    }); 
+        
+    })
 
     // sleep(10000)
 
@@ -184,9 +189,11 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
   }
 
 
-  var speech_to_text_wit =  function (url) {
-    var defer = Q.defer()
 
+
+
+
+  var speech_to_text_wit =  function () {
 
     console.log("Inside Wit!")
 
@@ -208,8 +215,6 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
     fbMessage(sender, 'Received Your voice input:')
 
-    return defer.promise
-
   }
 
  // Message handler
@@ -218,7 +223,7 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
    // See the Webhook reference
    // https://developers.facebook.com/docs/messenger-platform/webhook-reference
    const data = req.body;
- 
+   console.log(wordsToNumbers('nine'))
    if (data.object === 'page') {
      data.entry.forEach(entry => {
        entry.messaging.forEach(event => {
@@ -266,7 +271,118 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
             // speech_to_text_wit(url)
 
-            download_and_convert(url).then(() => {speech_to_text_wit})
+
+            // const promise = new Promise((resolve, reject) => {
+            //   // Make a network request
+            //    if (response.status === 200) {
+            //       resolve(response.body)
+            //    } else {
+            //       const error = { ... }
+            //       reject(error)
+            //    }
+            // })
+            // let voice_path = '/Users/ashwin/Downloads/media/user_voice.mp4'
+            // fetch(url)
+            //   .then(res => {
+            //     console.log(res)
+            //     var file = fs.createWriteStream(voice_path);
+            //     res.body.pipe(file);
+            //     ffmpeg()
+            //     .input('/Users/ashwin/Downloads/media/user_voice.mp4')
+            //     .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+            //     .run()
+            //   })
+            //   .then(()=>{
+            //     speech_to_text_wit()
+            //   })
+            //   .catch(err => console.log(err))
+
+
+            download_and_convert(url)
+              .then(() => {
+                setTimeout(() => {
+                  console.log("Inside Wit!")
+                  var req_wit = require('request');
+                  var options = {
+                    'method': 'POST',
+                    'url': 'https://api.wit.ai/speech?v=2020051',
+                    'headers': {
+                      'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
+                      'Content-Type': 'audio/wave'
+                    },
+                    body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+                  
+                  };
+                  req_wit(options, function (error, response) {
+                    if (error) throw new Error(error);
+                    console.log(response.body);
+                    let body = JSON.parse(response.body);
+
+                    let intent_name = body.intents[0].name
+
+
+
+                    if (intent_name == 'greeting') {
+                      for (let i=0; i<response_file.length; i++)
+                      {
+                          if(response_file[i]['intent'] == intent_name)
+                          {
+                              var random = Math.floor(Math.random() * response_file[i]['response'].length);
+                              console.log(response_file[i]['response'][random]);
+                              fbMessage(sender, response_file[i]['response'][random]);
+
+
+                              for(var k=0;k <10000; k++ ) {
+                                for (var j=0;j<10000; j++)
+                                {
+
+                                }
+                              }
+
+
+                              random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
+                              console.log(response_file[i]['after_greeting'][random]);
+                              fbMessage(sender, response_file[i]['after_greeting'][random]);
+                          }
+                      }
+                    }
+
+
+                    if (intent_name == 'spend_capacity') {
+
+                      if(body.entities['wit$amount_of_money:amount_of_money']){
+                          amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
+                      }
+
+                      if(body.entities['Calories:Calories']){
+                        for (let x=0;x<body.entities['Calories:Calories'].length;x++) {
+                          let int_cal = parseInt(body.entities['Calories:Calories'][0]['value'])
+                          if (int_cal != 'NaN') {
+                            calorie = parseInt(body.entities['Calories:Calories'][0]['value'])
+                          }
+                        }
+                      }
+
+                      if (calorie<0 && amount>=0) {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                      }else if(calorie>=0 && amount>=0) {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                          //api_call to restaurant
+                          amount=-999
+                          calorie=-100
+                      }else if(calorie<0 && amount<0) {
+                          fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                      }
+
+                  }
+
+
+
+                  });
+
+                }, 5000);
+                console.log("Hi")
+              })
 
             // speech_to_text_wit()
             // .then(speech_to_text_wit)
@@ -319,50 +435,117 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
                         if(entities['wit$amount_of_money:amount_of_money']){
                             amount = entities['wit$amount_of_money:amount_of_money'][0]['value']
-                            if (calorie<0) {
-                                fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
-                            }else {
-                                fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you're willing to take ${calorie} calories.`);
-                            }
-
-                        }else {
-                            for (let i=0; i<response.length; i++)
-                            {
-                                if(response[i]['intent'] == 'spend_capacity_no_amount')
-                                {
-                                    const random = Math.floor(Math.random() * response[i]['response'].length);
-                                    console.log(response[i]['response'][random]);
-                                    fbMessage(sender, response[i]['response'][random]);
-                                }
-                            }
                         }
-                    }
 
+                        if(entities['Calories:Calories']){
+                          for (let x=0;x<entities['Calories:Calories'].length;x++) {
+                            let int_cal = parseInt(entities['Calories:Calories'][0]['value'])
+                            if (int_cal != 'NaN') {
+                              calorie = parseInt(entities['Calories:Calories'][0]['value'])
+                            }
+                          }
+                        }
+
+                        if (calorie<0 && amount>=0) {
+                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                        }else if(calorie>=0 && amount>=0) {
+                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                            //api_call to restaurant
+                            amount=-999
+                            calorie=-100
+                        }else if(calorie<0 && amount<0) {
+                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                        }
+
+                    }
+                    
+                    //for both calorie and money
                     if (intent_name == 'both_calorie_and_money') {
                         if(entities['wit$amount_of_money:amount_of_money']){
                             amount = entities['wit$amount_of_money:amount_of_money'][0]['value']
                         }
                         if(entities['Calories:Calories']){
-                            calorie = entities['Calories:Calories'][0]['value']
+                          for (x=0;x<entities['Calories:Calories'].length;x++) {
+                            let int_cal = parseInt(entities['Calories:Calories'][0]['value'])
+                            if (int_cal != 'NaN') {
+                              calorie = parseInt(entities['Calories:Calories'][0]['value'])
+                            }
+                          }
+
                         }
+
+                        if (calorie<0 && amount>=0) {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                      }else if(amout<0 && calorie>=0) {
+                          fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                      }else if(calorie<0 && amount<0)
+                      {
+                        fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                      }else {
+                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                        //api_call to restaurant
+                        amount=-999
+                        calorie=-100
+                      }
                     }
 
+                    //only calorie
+                    if(intent_name == 'Calories')
+                    {
+                      if(entities['wit$amount_of_money:amount_of_money']){
+                        amount = entities['wit$amount_of_money:amount_of_money'][0]['value']
+                      }
+
+                      if(entities['Calories:Calories']){
+                        for (let x=0;x<entities['Calories:Calories'].length;x++) {
+                          let int_cal = parseInt(entities['Calories:Calories'][x]['value'])
+                          if (isNaN(int_cal)) {
+                            console.log("NaN Case, Ignore!")
+                          } else {
+                            calorie = int_cal
+                          }
+                        }
+                      }
+
+                      console.log(calorie, amount)
+
+                      if (amount<0 && calorie>=0) {
+                        fbMessage(sender, `Nice, you want to take ${calorie} calories for this hour, may i know your budget?`);
+                      }else if(calorie>=0 && amount>=0) {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                          //api_call to restaurant
+                          amount=-999
+                          calorie=-100
+                      }else if((calorie<0 || isNaN(calorie)) && amount<0) {
+                          fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                      }else if (calorie<0 && amount>=0) {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                      }
+                      
+                    }
                     
 
                     if (intent_name == 'greeting') {
-                        for (let i=0; i<response.length; i++)
+                        for (let i=0; i<response_file.length; i++)
                         {
-                            if(response[i]['intent'] == intent_name)
+                            if(response_file[i]['intent'] == intent_name)
                             {
-                                var random = Math.floor(Math.random() * response[i]['response'].length);
-                                console.log(response[i]['response'][random]);
-                                fbMessage(sender, response[i]['response'][random]);
+                                var random = Math.floor(Math.random() * response_file[i]['response'].length);
+                                console.log(response_file[i]['response'][random]);
+                                fbMessage(sender, response_file[i]['response'][random]);
 
-                                sleep(2000);
 
-                                random = Math.floor(Math.random() * response[i]['after_greeting'].length);
-                                console.log(response[i]['after_greeting'][random]);
-                                fbMessage(sender, response[i]['after_greeting'][random]);
+                                for(var k=0;k <10000; k++ ) {
+                                  for (var j=0;j<10000; j++)
+                                  {
+
+                                  }
+                                }
+
+
+                                random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
+                                console.log(response_file[i]['after_greeting'][random]);
+                                fbMessage(sender, response_file[i]['after_greeting'][random]);
                             }
                         }
                     }
