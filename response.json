@@ -1,0 +1,31 @@
+[
+    {
+        "intent" : "greeting",
+        "response" : [
+            "Hey hi, I'm Restropedia bot! I'm Here to take care of your diet within your spend capacity!",
+            "Hello, I'm Restropedia Bot, glad to serve you. I will take care of all your hunger needs.",
+            "Hi mate, Ask me anything you want to eat within your diet and spend range! I'm here to serve you!"
+        ],
+        "after_greeting" : [
+            "can I get to know your amount which you want to spend on your food? and your calorie intake?",
+            "I want to know your calorie intake for this food and amount you want to spend?"
+        ]
+    },
+    {
+        "intent" : "spend_capacity",
+        "response" : [
+            "",
+            "Hello, I'm Restropedia Bot, glad to serve you. I will take care of all your hunger needs",
+            "Hi mate, Ask me anything you want to eat within your diet and spend range! I'm here to serve you!"
+        ]
+    },
+    {
+        "intent" : "spend_capacity_no_amount",
+        "response" : [
+            "Cool, can I get to know your amount which you want to spend?",
+            "Okay, no worries. How much money do you want spend?",
+            "Okay got it, can you please provide me feasible range you want to spend?"
+        ]
+    }
+
+]
