@@ -1,7 +1,7 @@
 {
-    "name": "messenger-quick-start",
-    "version": "2.0.0",
-    "description": "An example webhook for Facebook Messenger quick start tutorial.",
+    "name": "skimping_diet",
+    "version": "1.0.0",
+    "description": "A messenger bot which takes care of your diet and money",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
@@ -18,13 +18,12 @@
         "words-to-numbers": "^1.5.1"
     },
     "engines": {
-        "node": ">=10.x"
+        "node": "14.x"
     },
     "repository": {
         "url": "https://github.com/fbsamples/messenger-platform-samples"
     },
-    "author": "Facebook",
-    "license": "ISC",
+    "author": "Restropedia",
     "keywords": [
         "messenger",
         "webhook"
