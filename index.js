@@ -194,7 +194,6 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
    // See the Webhook reference
    // https://developers.facebook.com/docs/messenger-platform/webhook-reference
    const data = req.body;
-   console.log(wordsToNumbers('nine'))
    if (data.object === 'page') {
      data.entry.forEach(entry => {
        entry.messaging.forEach(event => {
@@ -239,67 +238,145 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                     let body = JSON.parse(response.body);
 
                     let intent_name
-                    if (body.intents.length > 0) 
-                    {
-                      intent_name = body.intents[0].name
 
-                      if (intent_name == 'greeting') {
-                        for (let i=0; i<response_file.length; i++)
-                        {
-                            if(response_file[i]['intent'] == intent_name)
+                    
+                    try {
+                      if (body.intents.length > 0) {
+                          intent_name = body.intents[0].name
+                          console.log("Intent name:" , intent_name)
+
+                          //Handling greeting
+                          if (intent_name == 'greeting') {
+                            for (let i=0; i<response_file.length; i++)
                             {
-                                var random = Math.floor(Math.random() * response_file[i]['response'].length);
-                                console.log(response_file[i]['response'][random]);
-                                fbMessage(sender, response_file[i]['response'][random]);
+                                if(response_file[i]['intent'] == intent_name)
+                                {
+                                    var random = Math.floor(Math.random() * response_file[i]['response'].length);
+                                    console.log(response_file[i]['response'][random]);
+                                    fbMessage(sender, response_file[i]['response'][random]);
 
-
-                                for(var k=0;k <10000; k++ ) {
-                                  for (var j=0;j<10000; j++)
-                                  {
-
-                                  }
+                                    random = Math.floor(Math.random() * response_file[i]['after_greeting_text'].length);
+                                    console.log(response_file[i]['after_greeting_text'][random]);
+                                    setTimeout(() => {fbMessage(sender, response_file[i]['after_greeting_text'][random]) }, 2000)
                                 }
-
-
-                                random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
-                                console.log(response_file[i]['after_greeting'][random]);
-                                fbMessage(sender, response_file[i]['after_greeting'][random]);
-                            }
-                        }
-                      }
-
-
-                      if (intent_name == 'spend_capacity') {
-
-                        if(body.entities['wit$amount_of_money:amount_of_money']){
-                            amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
-                        }
-
-                        if(body.entities['Calories:Calories']){
-                          for (let x=0;x<body.entities['Calories:Calories'].length;x++) {
-                            let int_cal = parseInt(body.entities['Calories:Calories'][0]['value'])
-                            if (int_cal != 'NaN') {
-                              calorie = parseInt(body.entities['Calories:Calories'][0]['value'])
                             }
                           }
-                        }
 
-                        if (calorie<0 && amount>=0) {
-                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
-                        }else if(calorie>=0 && amount>=0) {
-                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
-                            //api_call to restaurant
-                            amount=-999
-                            calorie=-100
-                        }else if(calorie<0 && amount<0) {
-                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
-                        }
+                          //Handling money
+                          else if (intent_name == 'spend_capacity') {
 
+                            if(body.entities['wit$amount_of_money:amount_of_money']){
+                                amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
+                            }
+
+                            if(body.entities['Calories:Calories']){
+                              for (let x=0;x<body.entities['Calories:Calories'].length;x++) {
+                                let int_cal = parseInt(body.entities['Calories:Calories'][0]['value'])
+                                if (int_cal != 'NaN') {
+                                  calorie = parseInt(body.entities['Calories:Calories'][0]['value'])
+                                }
+                              }
+                            }
+
+                            if (calorie<0 && amount>=0) {
+                                fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                            }else if(calorie>=0 && amount>=0) {
+                                fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                                //api_call to restaurant
+                                amount=-999
+                                calorie=-100
+                            }else if(calorie<0 && amount<0) {
+                                fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                            }else if(calorie>=0 && amount<0) {
+                              fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                            }
+                          }
+
+
+                            //Handling Calories
+                            else if (intent_name == 'Calories') {
+                              if(body.entities['Calories:Calories']) {
+                                // calorie = wordsToNumbers(body.text).replace(/[^0-9]/g,'')
+                                calorie = wordsToNumbers(body.text).match(/\d+/g).map(Number);
+                                calorie = calorie[0]
+                              }
+                                console.log("Calorie", calorie)
+                                if (calorie<0 && amount>=0) {
+                                    fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                }else if(calorie>=0 && amount>=0) {
+                                    fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                                    //api_call to restaurant
+                                    amount=-999
+                                    calorie=-100
+                                }else if(calorie<0 && amount<0) {
+                                    fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                }else if(calorie>=0 && amount<0) {
+                                    fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                }
+
+                              }
+
+                            else if (intent_name == 'both_calorie_and_money') {
+                              if(body.entities['wit$amount_of_money:amount_of_money']){
+                                amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
+                              }
+                              if(body.entities['Calories:Calories']) {
+                                let text_wo_budget
+                                if (amount>=0)
+                                {
+                                  text_wo_budget = wordsToNumbers(body.text)
+                                  // console.log(text_wo_budget)
+                                  // text_wo_budget = text_wo_budget.split(amount).join('');
+                                  // console.log(text_wo_budget)
+                                  var numbers = wordsToNumbers(text_wo_budget).match(/\d+/g).map(Number);
+                                  console.log(numbers)
+                                  if (numbers.length == 2) {
+                                    for(var i=0;i<numbers.length;i++)
+                                    {
+                                      if(numbers[i] == amount) {
+                                        console.log("Amount detected")
+                                      } else {
+                                        calorie = numbers[i]
+                                      }
+                                    }
+                                    console.log("calorie: ", calorie)
+                                  }
+
+                                } else {
+                                  calorie = wordsToNumbers(body.text).replace(/[^0-9]/g,'')
+                                }
+                              }
+                              if (calorie<0 && amount>=0) {
+                                fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                              }else if(calorie>=0 && amount>=0) {
+                                  fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...`);
+                                  //api_call to restaurant
+                                  amount=-999
+                                  calorie=-100
+                              }else if(calorie<0 && amount<0) {
+                                  fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                              }else if(calorie>=0 && amount<0) {
+                                  fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                              }
+
+                            }
+
+                            else {
+                              fbMessage(sender, `Sorry I didn't catch that, can you repeat again?`);
+                            }
+                          
+
+                        
+
+                      } else {
+                        fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
+                      }
+                    } catch (e) {
+                      console.log(e)
+                      fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
                     }
 
-                  } else {
-                    fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
-                  }
+                  
 
                   });
 
@@ -343,12 +420,14 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                         if (calorie<0 && amount>=0) {
                             fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
                         }else if(calorie>=0 && amount>=0) {
-                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie Intake. Let me search perfect food for you...`);
                             //api_call to restaurant
                             amount=-999
                             calorie=-100
                         }else if(calorie<0 && amount<0) {
                             fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                        }else if(calorie>=0 && amount<0) {
+                          fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
                         }
 
                     }
@@ -370,17 +449,17 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
                         if (calorie<0 && amount>=0) {
                           fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
-                      }else if(amout<0 && calorie>=0) {
-                          fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
-                      }else if(calorie<0 && amount<0)
-                      {
-                        fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
-                      }else {
-                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
-                        //api_call to restaurant
-                        amount=-999
-                        calorie=-100
-                      }
+                        }else if(amout<0 && calorie>=0) {
+                            fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                        }else if(calorie<0 && amount<0)
+                        {
+                          fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                        }else {
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...`);
+                          //api_call to restaurant
+                          amount=-999
+                          calorie=-100
+                        }
                     }
 
                     //only calorie
@@ -406,7 +485,7 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                       if (amount<0 && calorie>=0) {
                         fbMessage(sender, `Nice, you want to take ${calorie} calories for this hour, may i know your budget?`);
                       }else if(calorie>=0 && amount>=0) {
-                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...`);
                           //api_call to restaurant
                           amount=-999
                           calorie=-100
@@ -428,26 +507,19 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                                 console.log(response_file[i]['response'][random]);
                                 fbMessage(sender, response_file[i]['response'][random]);
 
-
-                                for(var k=0;k <10000; k++ ) {
-                                  for (var j=0;j<10000; j++)
-                                  {
-
-                                  }
-                                }
-
-
-                                random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
-                                console.log(response_file[i]['after_greeting'][random]);
-                                fbMessage(sender, response_file[i]['after_greeting'][random]);
+                                random = Math.floor(Math.random() * response_file[i]['after_greeting_text'].length);
+                                console.log(response_file[i]['after_greeting_text'][random]);
+                                setTimeout(() => {fbMessage(sender, response_file[i]['after_greeting_text'][random]) }, 2000)
                             }
                         }
                     }
                 }
 
+
              })
              .catch((err) => {
                console.error('Oops! Got an error from Wit: ', err.stack || err);
+               fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
              })
            }
         }

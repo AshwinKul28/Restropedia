@@ -105,3 +105,7 @@ dist
 
 # media directory
 media/*
+
+# test file
+test_audio.js
+.DS_Store

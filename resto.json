@@ -1,0 +1,387 @@
+{
+
+   
+    "hits": [
+      {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "5976643fa690431a53463b05",
+        "_score": 11.765966,
+        "fields": {
+          "item_id": "5976643fa690431a53463b05",
+          "item_name": "Cheese, cheddar - 1 piece",
+          "brand_name": "USDA",
+          "nf_calories": 113.12,
+          "nf_total_fat": 9.33,
+          "nf_serving_size_qty": 1,
+          "nf_serving_size_unit": "serving"
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "513fceb375b8dbbc2100001d",
+        "_score": 11.0170765,
+        "fields": {
+          "item_name": "Cheddar Cheese - 1 slice (1 oz)",
+          "brand_name": "USDA",
+          "nf_calories": 112.84,
+          "nf_total_fat": 9.28
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "513fceb375b8dbbc2100001e",
+        "_score": 10.649932,
+        "fields": {
+          "item_name": "Cheddar Cheese - 1 cubic inch",
+          "brand_name": "USDA",
+          "nf_calories": 68.51,
+          "nf_total_fat": 5.63
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "513fceb375b8dbbc21000020",
+        "_score": 10.649931, "brand_name":"54th Street Grill & Bar",
+
+        "fields": {
+          "item_name": "Cheddar Cheese - 1 cup, shredded",
+          "brand_name": "USDA",
+          "nf_calories": 455.39,
+          "nf_total_fat": 37.45
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "513fceb375b8dbbc2100001f",
+        "_score": 10.519726,
+        "fields": {
+          "item_name": "Cheddar Cheese - 1 oz",
+          "brand_name": "USDA",
+          "nf_calories": 114.25,
+          "nf_total_fat": 9.4
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "513fceb375b8dbbc21000021",
+        "_score": 10.457439,
+        "fields": {
+          "item_name": "Cheddar Cheese - 1 cup, melted",
+          "brand_name": "USDA",
+          "nf_calories": 983.32,
+          "nf_total_fat": 80.86
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "51c3c2be97c3e6d8d3b4a186",
+        "_score": 1.1975749,
+        "fields": {}
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "51c3c08a97c3e6d8d3b49022",
+        "_score": 1.1616982,
+        "fields": {
+          "item_name": "Shredded Cheese, Natural Cheddar",
+          "brand_name": "Miller's Cheese",
+          "nf_calories": 112,
+          "nf_total_fat": 9
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "51d2fda1cc9bff111580eb76",
+        "_score": 1.1379169,
+        "fields": {
+          "item_name": "Cheese Snack, Cheddar 'n Bacon",
+          "brand_name": "Easy Cheese",
+          "nf_calories": 90,
+          "nf_total_fat": 6
+        }
+      },
+      {
+        "_index": "nixproductionv13",
+        "_type": "item",
+        "_id": "51c3bf9b97c3e6d8d3b48874",
+        "_score": 1.1379169,
+        "fields": {
+          "item_name": "Pasteurized Process Cheese Sauce, Cheddar",
+          "brand_name": "Party Cheese",
+          "nf_calories": 90,
+          "nf_total_fat": 7
+        }
+      },
+        
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"5be29021da8402c04ae1d8d3",
+        "_score":5.1781034,
+        "fields":{
+        "item_id":"5be29021da8402c04ae1d8d3",
+        "item_name":"Wholemeal Rye",
+        "brand_name":"Burger",
+        "nf_calories":343.46,
+        "nf_total_fat":1.6,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"59ae4bbab36fddff2587f91d",
+        "_score":5.0312815,
+        "fields":{
+        "item_id":"59ae4bbab36fddff2587f91d",
+        "item_name":"Crispbread, Sesame",
+        "brand_name":"Burger",
+        "nf_calories":340.59,
+        "nf_total_fat":5.5,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "item_id":"51d37a92cc9bff5553aa9f36",
+        "item_name":"Burger",
+        "brand_name":"Bubba",
+        "nf_calories":340,
+        "nf_total_fat":26,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"513fc9e73fe3ffd403000bb4",
+        "_score":4.059548,
+        "fields":{
+            "item_id":"513fc9e73fe3ffd403000bb4",
+            "item_name":"Burger",
+            "brand_name":"Ponderosa Steakhouse",
+            "nf_calories":660,
+            "nf_total_fat":38,
+            "nf_serving_size_qty":1,
+            "nf_serving_size_unit":"serving"
+        }
+   },
+     
+   {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"53444fb0cd5bb303a94c4c24",
+        "_score":3.9484327,
+        "fields":{
+            "item_id":"53444fb0cd5bb303a94c4c24",
+            "item_name":"Burger",
+            "brand_name":"Broadway Pizza Restaurant",
+            "nf_calories":590,
+            "nf_total_fat":29,
+            "nf_serving_size_qty":1,
+            "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"557dc43937b681fa280ef425",
+        "_score":3.9484327,
+        "fields":{
+        "item_id":"557dc43937b681fa280ef425",
+        "item_name":"Burger",
+        "brand_name":"Schweid & Sons",
+        "nf_calories":200,
+        "nf_total_fat":18,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+   
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"53fe0d52e241143a78582897",
+        "_score":3.778,
+        "fields":{
+        "item_id":"53fe0d52e241143a78582897",
+        "item_name":"Burger",
+        "brand_name":"Maui Taro",
+        "nf_calories":120,
+        "nf_total_fat":2,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"556f093eaadea5e7765eef7f",
+        "_score":3.738344,
+        "fields":{
+        "item_id":"556f093eaadea5e7765eef7f",
+        "item_name":"Burger",
+        "brand_name":"Bubba",
+        "nf_calories":240,
+        "nf_total_fat":17,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"1521271618aa68d0642d11e9",
+        "_score":3.735898,
+        "fields":{
+        "item_id":"1521271618aa68d0642d11e9",
+        "item_name":"Burger",
+      
+        "brand_name":"Sprouts Market Corner",
+        "nf_calories":730, 
+        
+
+        "nf_total_fat":40,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"5644f24f0cb33d6e42899b4e",
+        "_score":11.926094,
+        "fields":{
+        "item_id":"5644f24f0cb33d6e42899b4e",
+        "item_name":"Mixed Lettuce - 3 cups",
+        "brand_name":"Nutritionix",
+        "nf_calories":19.98,
+        "nf_total_fat":0.2,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"5644f21cb1cf74f205da9920",
+        "_score":11.275116,
+        "fields":{
+        "item_id":"5644f21cb1cf74f205da9920",
+        "brand_name":"Sprouts Market Corner",
+        "item_name":"Mixed Lettuce - 1 serving",
+       
+        "nf_calories":19.99,
+        "nf_total_fat":0.2,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"5644f24f0cb33d6e42899b4f",
+        "_score":11.275116,
+        "fields":{
+        "item_id":"5644f24f0cb33d6e42899b4f",
+        "item_name":"Mixed Lettuce - 3 oz",
+        "brand_name":"Nutritionix",
+        "nf_calories":19.98,
+        "nf_total_fat":0.2,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+   
+
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "brand_name":"Sprouts Market Corner",
+        "item_id":"5da6c2339094e13219339f14",
+        "_score":4.083047,
+        "fields":{
+        "item_id":"5da6c2339094e13219339f14",
+        "item_name":"Salad",
+        "brand_name":"Sprouts Market Corner",
+        "nf_calories":420,
+        "nf_total_fat":30,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"513fc991927da70408000003",
+        "_score":4.0477886,
+        "fields":{
+        "item_id":"513fc991927da70408000003",
+        "item_name":"Salad",
+        "brand_name":"Chipotle",
+        "nf_calories":10,
+        "nf_total_fat":0,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        }
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "brand_name":"Sprouts Market Corner",
+        "item_name":"Salad",
+        
+        "nf_calories":140,
+        "nf_total_fat":9,
+        "nf_serving_size_qty":1,
+        "nf_serving_size_unit":"serving"
+        
+    },
+    
+    {
+        "_index":"f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type":"item",
+        "_id":"58426e764a87d0c773929165",
+        "_score":3.9851315,
+        "fields":{
+        "item_id":"58426e764a87d0c773929165", "brand_name":"54th Street Grill & Bar",
+
+        "nf_serving_size_unit":"serving"
+        }
+    }
+   
+]
+}
+
+
+
+
+
+   

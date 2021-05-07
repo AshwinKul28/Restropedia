@@ -4,22 +4,51 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const https = require('https');
 const fs = require('fs');
 const fetch = require('node-fetch');
+const { wordsToNumbers } = require('words-to-numbers');
 
-var request = require('request');
-var options = {
-  'method': 'POST',
-  'url': 'https://api.wit.ai/speech?v=2020051',
-  'headers': {
-    'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
-    'Content-Type': 'audio/wave'
-  },
-  body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+// console.log(wordsToNumbers("i want to take to sixty five calories"))
+// console.log(wordsToNumbers("i want to take to sixty five calories").replace(/[^0-9]/g,''))
 
-};
-request(options, function (error, response) {
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
+var numbers = wordsToNumbers("i want to spend two hundred calories and two twenty dollars")
+calorie = wordsToNumbers("who won the calories").match(/\d+/g).map(Number);
+console.log(calorie)
+
+// numbers = numbers.match(/\d+/g).map(Number);
+// var calorie
+
+// if (numbers.length!=2){
+
+// }
+
+
+// for(i=0;i<numbers.length;i++)
+// {
+//   if(numbers[i] == 20) {
+//     console.log("Amount detected")
+//   } else {
+//     calorie = numbers[i]
+//   }
+// }
+
+console.log(calorie)
+
+
+
+// var request = require('request');
+// var options = {
+//   'method': 'POST',
+//   'url': 'https://api.wit.ai/speech?v=2020051',
+//   'headers': {
+//     'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
+//     'Content-Type': 'audio/wave'
+//   },
+//   body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+
+// };
+// request(options, function (error, response) {
+//   if (error) throw new Error(error);
+//   console.log(response.body);
+// });
 
 
 

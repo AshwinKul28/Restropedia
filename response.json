@@ -6,7 +6,7 @@
             "Hello, I'm Restropedia Bot, glad to serve you. I will take care of all your hunger needs.",
             "Hi mate, Ask me anything you want to eat within your diet and spend range! I'm here to serve you!"
         ],
-        "after_greeting" : [
+        "after_greeting_text" : [
             "can I get to know your amount which you want to spend on your food? and your calorie intake?",
             "I want to know your calorie intake for this food and amount you want to spend?"
         ]
