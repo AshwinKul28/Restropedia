@@ -157,7 +157,7 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
     var defer = Q.defer()
     console.log("Inside download and convert")
-    const path = '/Users/ashwin/Downloads/media/user_voice.mp4' // where to save a file
+    const path = './media/user_voice.mp4' // where to save a file
     const request = https.get(url, function(response) {
         if (response.statusCode === 200) {
             var file = fs.createWriteStream(path);
@@ -166,8 +166,8 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
             setTimeout(() => {
               ffmpeg()
-              .input('/Users/ashwin/Downloads/media/user_voice.mp4')
-              .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+              .input('./media/user_voice.mp4')
+              .output('./media/user_voice_conv.wav')
               .run()
             }, 3000)
 
@@ -186,35 +186,6 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
     defer.resolve()
     return defer.promise
-  }
-
-
-
-
-
-
-  var speech_to_text_wit =  function () {
-
-    console.log("Inside Wit!")
-
-    var req_wit = require('request');
-    var options = {
-      'method': 'POST',
-      'url': 'https://api.wit.ai/speech?v=2020051',
-      'headers': {
-        'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
-        'Content-Type': 'audio/wave'
-      },
-      body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
-    
-    };
-    req_wit(options, function (error, response) {
-      if (error) throw new Error(error);
-      console.log(response.body);
-    });
-
-    fbMessage(sender, 'Received Your voice input:')
-
   }
 
  // Message handler
@@ -247,57 +218,6 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
              var url = attachments[0]['payload']['url']   
              
 
-            // const path = '/Users/ashwin/Downloads/media/user_voice.mp4' // where to save a file
-            // const request = https.get(url, function(response) {
-            //     if (response.statusCode === 200) {
-            //         var file = fs.createWriteStream(path);
-            //         response.pipe(file);
-
-            //         ffmpeg()
-            //             .input('/Users/ashwin/Downloads/media/user_voice.mp4')
-            //             .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
-            //             .run()
-            //     }
-            //     request.setTimeout(60000, function() { // if after 60s file not downlaoded, we abort a request 
-            //         request.abort();
-            //     })
-            // });
-
-            // download_and_convert(url)
-            // .then(function () {
-            //   console.log("Yeah!")
-            //   return speech_to_text_wit
-            // })
-
-            // speech_to_text_wit(url)
-
-
-            // const promise = new Promise((resolve, reject) => {
-            //   // Make a network request
-            //    if (response.status === 200) {
-            //       resolve(response.body)
-            //    } else {
-            //       const error = { ... }
-            //       reject(error)
-            //    }
-            // })
-            // let voice_path = '/Users/ashwin/Downloads/media/user_voice.mp4'
-            // fetch(url)
-            //   .then(res => {
-            //     console.log(res)
-            //     var file = fs.createWriteStream(voice_path);
-            //     res.body.pipe(file);
-            //     ffmpeg()
-            //     .input('/Users/ashwin/Downloads/media/user_voice.mp4')
-            //     .output('/Users/ashwin/Downloads/media/user_voice_conv.wav')
-            //     .run()
-            //   })
-            //   .then(()=>{
-            //     speech_to_text_wit()
-            //   })
-            //   .catch(err => console.log(err))
-
-
             download_and_convert(url)
               .then(() => {
                 setTimeout(() => {
@@ -310,7 +230,7 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                       'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
                       'Content-Type': 'audio/wave'
                     },
-                    body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
+                    body: fs.createReadStream('./media/user_voice_conv.wav')
                   
                   };
                   req_wit(options, function (error, response) {
@@ -318,100 +238,74 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
                     console.log(response.body);
                     let body = JSON.parse(response.body);
 
-                    let intent_name = body.intents[0].name
+                    let intent_name
+                    if (body.intents.length > 0) 
+                    {
+                      intent_name = body.intents[0].name
+
+                      if (intent_name == 'greeting') {
+                        for (let i=0; i<response_file.length; i++)
+                        {
+                            if(response_file[i]['intent'] == intent_name)
+                            {
+                                var random = Math.floor(Math.random() * response_file[i]['response'].length);
+                                console.log(response_file[i]['response'][random]);
+                                fbMessage(sender, response_file[i]['response'][random]);
 
 
+                                for(var k=0;k <10000; k++ ) {
+                                  for (var j=0;j<10000; j++)
+                                  {
 
-                    if (intent_name == 'greeting') {
-                      for (let i=0; i<response_file.length; i++)
-                      {
-                          if(response_file[i]['intent'] == intent_name)
-                          {
-                              var random = Math.floor(Math.random() * response_file[i]['response'].length);
-                              console.log(response_file[i]['response'][random]);
-                              fbMessage(sender, response_file[i]['response'][random]);
-
-
-                              for(var k=0;k <10000; k++ ) {
-                                for (var j=0;j<10000; j++)
-                                {
-
+                                  }
                                 }
-                              }
 
 
-                              random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
-                              console.log(response_file[i]['after_greeting'][random]);
-                              fbMessage(sender, response_file[i]['after_greeting'][random]);
-                          }
-                      }
-                    }
-
-
-                    if (intent_name == 'spend_capacity') {
-
-                      if(body.entities['wit$amount_of_money:amount_of_money']){
-                          amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
-                      }
-
-                      if(body.entities['Calories:Calories']){
-                        for (let x=0;x<body.entities['Calories:Calories'].length;x++) {
-                          let int_cal = parseInt(body.entities['Calories:Calories'][0]['value'])
-                          if (int_cal != 'NaN') {
-                            calorie = parseInt(body.entities['Calories:Calories'][0]['value'])
-                          }
+                                random = Math.floor(Math.random() * response_file[i]['after_greeting'].length);
+                                console.log(response_file[i]['after_greeting'][random]);
+                                fbMessage(sender, response_file[i]['after_greeting'][random]);
+                            }
                         }
                       }
 
-                      if (calorie<0 && amount>=0) {
-                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
-                      }else if(calorie>=0 && amount>=0) {
-                          fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
-                          //api_call to restaurant
-                          amount=-999
-                          calorie=-100
-                      }else if(calorie<0 && amount<0) {
-                          fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
-                      }
 
+                      if (intent_name == 'spend_capacity') {
+
+                        if(body.entities['wit$amount_of_money:amount_of_money']){
+                            amount = body.entities['wit$amount_of_money:amount_of_money'][0]['value']
+                        }
+
+                        if(body.entities['Calories:Calories']){
+                          for (let x=0;x<body.entities['Calories:Calories'].length;x++) {
+                            let int_cal = parseInt(body.entities['Calories:Calories'][0]['value'])
+                            if (int_cal != 'NaN') {
+                              calorie = parseInt(body.entities['Calories:Calories'][0]['value'])
+                            }
+                          }
+                        }
+
+                        if (calorie<0 && amount>=0) {
+                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                        }else if(calorie>=0 && amount>=0) {
+                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...`);
+                            //api_call to restaurant
+                            amount=-999
+                            calorie=-100
+                        }else if(calorie<0 && amount<0) {
+                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                        }
+
+                    }
+
+                  } else {
+                    fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
                   }
-
-
 
                   });
 
                 }, 5000);
                 console.log("Hi")
               })
-
-            // speech_to_text_wit()
-            // .then(speech_to_text_wit)
-
-            // sleep(50000)
-
-            // var req_wit = require('request');
-            // var options = {
-            //   'method': 'POST',
-            //   'url': 'https://api.wit.ai/speech?v=2020051',
-            //   'headers': {
-            //     'Authorization': 'Bearer FAX746ZHPURD6LGECJEITV3DLKERRSFQ',
-            //     'Content-Type': 'audio/wave'
-            //   },
-            //   body: fs.createReadStream('/Users/ashwin/Downloads/media/user_voice_conv.wav')
-            
-            // };
-            // req_wit(options, function (error, response) {
-            //   if (error) throw new Error(error);
-            //   console.log(response.body);
-            // });
-
-
-             
-             
-            //  .catch(console.error);
-
-
-             
            } else if (text) {
              // We received a text message
              // Let's run /message on the text to extract some entities, intents and traits
@@ -597,5 +491,12 @@ const { SSL_OP_EPHEMERAL_RSA } = require('constants');
    }
  }
  
+  var dir = './media';
+
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+  }
+
+
  app.listen(PORT);
  console.log('Listening on :' + PORT + '...');
