@@ -284,35 +284,41 @@ app.post('/webhook', (req, res) => {
                                                     }
 
                                                     if (calorie < 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in? 🤔`);
                                                     } else if (calorie >= 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...\n\n`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...😋\n\n`);
                                                         //api_call to restaurant
                                                         (async (amount, calorie) => {
                                                             try {
                                                               var items = await getfood.getFoodItems(amount, calorie);
                                                                console.log(items) 
             
-                                                                var foodList = ""
+                                                               if(items.length == 0) {
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement. :( Please try again by adjusting your needs!\n`)
+                                                                    }, 1500)
+                                                                } else {
+                                                                    var foodList = ""
             
-                                                                for(let p=0; p<items.length;p++)
-                                                                {
-                                                                    let item_name = items[p]['fields']['item_name']
-                                                                    let item_brand = items[p]['fields']['brand_name']
-                                                                    let item_price = items[p]['fields']['price']
-                                                                    let item_cal = items[p]['fields']['nf_calories']
-                                                                    let item_link = items[p]['fields']['link']
+                                                                    for(let p=0; p<items.length;p++)
+                                                                    {
+                                                                        let item_name = items[p]['fields']['item_name']
+                                                                        let item_brand = items[p]['fields']['brand_name']
+                                                                        let item_price = items[p]['fields']['price']
+                                                                        let item_cal = items[p]['fields']['nf_calories']
+                                                                        let item_link = items[p]['fields']['link']
+                            
+                                                                        let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                                        foodList += item
+                                                                        console.log(item)
+                                                                    }
+                                                                    
+                                                                    console.log(foodList)
             
-                                                                    let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                                    foodList += item
-                                                                    console.log(item)
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                                    }, 1500)
                                                                 }
-                                                                
-                                                                console.log(foodList)
-            
-                                                                setTimeout(() => {
-                                                                    fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                                }, 1500)
                                                             } catch(error) {
                                                               console.error(error);
                                                             }
@@ -321,9 +327,9 @@ app.post('/webhook', (req, res) => {
                                                           amount = -999
                                                           calorie = -100
                                                     } else if (calorie < 0 && amount < 0) {
-                                                        fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                                        fbMessage(sender, `Sorry 😐 , I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                                     } else if (calorie >= 0 && amount < 0) {
-                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend? 🤔`);
                                                     }
                                                 }
 
@@ -337,35 +343,41 @@ app.post('/webhook', (req, res) => {
                                                     }
                                                     console.log("Calorie", calorie)
                                                     if (calorie < 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?  🤔`);
                                                     } else if (calorie >= 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} Intake. Let me search perfect food for you...\n\n`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...😋😋 \n\n`);
                                                         //api_call to restaurant
                                                         (async (amount, calorie) => {
                                                             try {
                                                               var items = await getfood.getFoodItems(amount, calorie);
                                                                console.log(items) 
             
-                                                                var foodList = ""
+                                                               if(items.length == 0) {
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement. :( Please try again by adjusting your needs!\n`)
+                                                                    }, 1500)
+                                                                } else {
+                                                                    var foodList = ""
             
-                                                                for(let p=0; p<items.length;p++)
-                                                                {
-                                                                    let item_name = items[p]['fields']['item_name']
-                                                                    let item_brand = items[p]['fields']['brand_name']
-                                                                    let item_price = items[p]['fields']['price']
-                                                                    let item_cal = items[p]['fields']['nf_calories']
-                                                                    let item_link = items[p]['fields']['link']
+                                                                    for(let p=0; p<items.length;p++)
+                                                                    {
+                                                                        let item_name = items[p]['fields']['item_name']
+                                                                        let item_brand = items[p]['fields']['brand_name']
+                                                                        let item_price = items[p]['fields']['price']
+                                                                        let item_cal = items[p]['fields']['nf_calories']
+                                                                        let item_link = items[p]['fields']['link']
+                            
+                                                                        let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                                        foodList += item
+                                                                        console.log(item)
+                                                                    }
+                                                                    
+                                                                    console.log(foodList)
             
-                                                                    let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                                    foodList += item
-                                                                    console.log(item)
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                                    }, 1500)
                                                                 }
-                                                                
-                                                                console.log(foodList)
-            
-                                                                setTimeout(() => {
-                                                                    fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                                }, 1500)
                                                             } catch(error) {
                                                               console.error(error);
                                                             }
@@ -374,9 +386,9 @@ app.post('/webhook', (req, res) => {
                                                           amount = -999
                                                           calorie = -100
                                                     } else if (calorie < 0 && amount < 0) {
-                                                        fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                                        fbMessage(sender, `Sorry 😐 , I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                                     } else if (calorie >= 0 && amount < 0) {
-                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend? 🤔`);
                                                     }
 
                                                 } 
@@ -411,35 +423,41 @@ app.post('/webhook', (req, res) => {
                                                         }
                                                     }
                                                     if (calorie < 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in? 🤔`);
                                                     } else if (calorie >= 0 && amount >= 0) {
-                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...\n\n`);
+                                                        fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...😋😋\n\n`);
                                                         //api_call to restaurant
                                                         (async (amount, calorie) => {
                                                             try {
                                                               var items = await getfood.getFoodItems(amount, calorie);
                                                                console.log(items) 
             
-                                                                var foodList = ""
+                                                               if(items.length == 0) {
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement. :( Please try again by adjusting your needs!\n`)
+                                                                    }, 1500)
+                                                                } else {
+                                                                    var foodList = ""
             
-                                                                for(let p=0; p<items.length;p++)
-                                                                {
-                                                                    let item_name = items[p]['fields']['item_name']
-                                                                    let item_brand = items[p]['fields']['brand_name']
-                                                                    let item_price = items[p]['fields']['price']
-                                                                    let item_cal = items[p]['fields']['nf_calories']
-                                                                    let item_link = items[p]['fields']['link']
+                                                                    for(let p=0; p<items.length;p++)
+                                                                    {
+                                                                        let item_name = items[p]['fields']['item_name']
+                                                                        let item_brand = items[p]['fields']['brand_name']
+                                                                        let item_price = items[p]['fields']['price']
+                                                                        let item_cal = items[p]['fields']['nf_calories']
+                                                                        let item_link = items[p]['fields']['link']
+                            
+                                                                        let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                                        foodList += item
+                                                                        console.log(item)
+                                                                    }
+                                                                    
+                                                                    console.log(foodList)
             
-                                                                    let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                                    foodList += item
-                                                                    console.log(item)
+                                                                    setTimeout(() => {
+                                                                        fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                                    }, 1500)
                                                                 }
-                                                                
-                                                                console.log(foodList)
-            
-                                                                setTimeout(() => {
-                                                                    fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                                }, 1500)
                                                             } catch(error) {
                                                               console.error(error);
                                                             }
@@ -449,24 +467,24 @@ app.post('/webhook', (req, res) => {
                                                           calorie = -100
 
                                                     } else if (calorie < 0 && amount < 0) {
-                                                        fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                                        fbMessage(sender, `Sorry 😐 I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                                     } else if (calorie >= 0 && amount < 0) {
-                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                                        fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend? 🤔`);
                                                     }
 
                                                 } else {
-                                                    fbMessage(sender, `Sorry I didn't catch that, can you repeat again?`);
+                                                    fbMessage(sender, `Sorry 😐 I didn't catch that, can you repeat again?`);
                                                 }
 
 
 
 
                                             } else {
-                                                fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
+                                                fbMessage(sender, `Sorry 😐 I didn't get you. Can you please repeat again? `);
                                             }
                                         } catch (e) {
                                             console.log(e)
-                                            fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
+                                            fbMessage(sender, `Sorry 😐 I didn't get you. Can you please repeat again?`);
                                         }
 
 
@@ -486,7 +504,7 @@ app.post('/webhook', (req, res) => {
                                 console.log(traits);
 
                                 if (intents.length == 0) {
-                                    fbMessage(sender, `Sorry, I'm keep improving myself. I don't know how to react to this. Can you please ask another question?`);
+                                    fbMessage(sender, `Sorry 😐 , I don't know how to react to this. I'm keep trying to improve myself. Maybe you've missed providing unit(dollar/cal) for your value...`);
 
                                 } else {
 
@@ -510,35 +528,41 @@ app.post('/webhook', (req, res) => {
                                         }
 
                                         if (calorie < 0 && amount >= 0) {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in? 🤔`);
                                         } else if (calorie >= 0 && amount >= 0) {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie Intake. Let me search perfect food for you...\n\n`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie Intake. Let me search perfect food for you...😋😋\n\n`);
                                             //api_call to restaurant
                                             (async (amount, calorie) => {
                                                 try {
                                                   var items = await getfood.getFoodItems(amount, calorie);
                                                    console.log(items) 
 
-                                                    var foodList = ""
+                                                    if(items.length == 0) {
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement.  Please try again by adjusting your needs!\n`)
+                                                        }, 1500)
+                                                    } else {
+                                                        var foodList = ""
 
-                                                    for(let p=0; p<items.length;p++)
-                                                    {
-                                                        let item_name = items[p]['fields']['item_name']
-                                                        let item_brand = items[p]['fields']['brand_name']
-                                                        let item_price = items[p]['fields']['price']
-                                                        let item_cal = items[p]['fields']['nf_calories']
-                                                        let item_link = items[p]['fields']['link']
-            
-                                                        let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                        foodList += item
-                                                        console.log(item)
+                                                        for(let p=0; p<items.length;p++)
+                                                        {
+                                                            let item_name = items[p]['fields']['item_name']
+                                                            let item_brand = items[p]['fields']['brand_name']
+                                                            let item_price = items[p]['fields']['price']
+                                                            let item_cal = items[p]['fields']['nf_calories']
+                                                            let item_link = items[p]['fields']['link']
+                
+                                                            let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                            foodList += item
+                                                            console.log(item)
+                                                        }
+                                                        
+                                                        console.log(foodList)
+
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                        }, 1500)
                                                     }
-                                                    
-                                                    console.log(foodList)
-
-                                                    setTimeout(() => {
-                                                        fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                    }, 1500)
                                                 } catch(error) {
                                                   console.error(error);
                                                 }
@@ -548,9 +572,9 @@ app.post('/webhook', (req, res) => {
                                               calorie = -100
 
                                         } else if (calorie < 0 && amount < 0) {
-                                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                            fbMessage(sender, `Sorry 😐 I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                         } else if (calorie >= 0 && amount < 0) {
-                                            fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                            fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend? 🤔`);
                                         }
 
                                     }
@@ -571,39 +595,45 @@ app.post('/webhook', (req, res) => {
                                         }
 
                                         if (calorie < 0 && amount >= 0) {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in? 🤔`);
                                         } else if (amount < 0 && calorie >= 0) {
-                                            fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend?`);
+                                            fbMessage(sender, `Amazing, you want to take ${calorie} calories, and how much amount you want to spend? 🤔`);
                                         } else if (calorie < 0 && amount < 0) {
-                                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                            fbMessage(sender, `Sorry 😐 I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                         } else {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...\n\n`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...😋😋\n\n`);
                                             //api_call to restaurant
                                             (async (amount, calorie) => {
                                                 try {
                                                   var items = await getfood.getFoodItems(amount, calorie);
                                                    console.log(items) 
 
-                                                    var foodList = ""
+                                                   if(items.length == 0) {
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement. :( Please try again by adjusting your needs!\n`)
+                                                        }, 1500)
+                                                    } else {
+                                                        var foodList = ""
 
-                                                    for(let p=0; p<items.length;p++)
-                                                    {
-                                                        let item_name = items[p]['fields']['item_name']
-                                                        let item_brand = items[p]['fields']['brand_name']
-                                                        let item_price = items[p]['fields']['price']
-                                                        let item_cal = items[p]['fields']['nf_calories']
-                                                        let item_link = items[p]['fields']['link']
-            
-                                                        let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                        foodList += item
-                                                        console.log(item)
+                                                        for(let p=0; p<items.length;p++)
+                                                        {
+                                                            let item_name = items[p]['fields']['item_name']
+                                                            let item_brand = items[p]['fields']['brand_name']
+                                                            let item_price = items[p]['fields']['price']
+                                                            let item_cal = items[p]['fields']['nf_calories']
+                                                            let item_link = items[p]['fields']['link']
+                
+                                                            let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                            foodList += item
+                                                            console.log(item)
+                                                        }
+                                                        
+                                                        console.log(foodList)
+
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                        }, 1500)
                                                     }
-                                                    
-                                                    console.log(foodList)
-
-                                                    setTimeout(() => {
-                                                        fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                    }, 1500)
                                                 } catch(error) {
                                                   console.error(error);
                                                 }
@@ -636,7 +666,7 @@ app.post('/webhook', (req, res) => {
                                         if (amount < 0 && calorie >= 0) {
                                             fbMessage(sender, `Nice, you want to take ${calorie} calories for this hour, may i know your budget?`);
                                         } else if (calorie >= 0 && amount >= 0) {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...\n\n`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food and you want to have ${calorie} calorie intake. Let me search perfect food for you...😋😋\n\n`);
                                             //api_call to restaurant
 
                                             (async (amount, calorie) => {
@@ -644,26 +674,32 @@ app.post('/webhook', (req, res) => {
                                                   var items = await getfood.getFoodItems(amount, calorie);
                                                    console.log(items) 
 
-                                                    var foodList = ""
+                                                   if(items.length == 0) {
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `Sorry 😐 , There is no Restaurant or Outlet near you serving your requirement. :( Please try again by adjusting your needs!\n`)
+                                                        }, 1500)
+                                                    } else {
+                                                        var foodList = ""
 
-                                                    for(let p=0; p<items.length;p++)
-                                                    {
-                                                        let item_name = items[p]['fields']['item_name']
-                                                        let item_brand = items[p]['fields']['brand_name']
-                                                        let item_price = items[p]['fields']['price']
-                                                        let item_cal = items[p]['fields']['nf_calories']
-                                                        let item_link = items[p]['fields']['link']
-            
-                                                        let item = "Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
-                                                        foodList += item
-                                                        console.log(item)
+                                                        for(let p=0; p<items.length;p++)
+                                                        {
+                                                            let item_name = items[p]['fields']['item_name']
+                                                            let item_brand = items[p]['fields']['brand_name']
+                                                            let item_price = items[p]['fields']['price']
+                                                            let item_cal = items[p]['fields']['nf_calories']
+                                                            let item_link = items[p]['fields']['link']
+                
+                                                            let item = "🍕 Item Name: " + item_name + "\nRestaurant: " + item_brand + "\nPrice: $" + item_price + "\nCalories: " + item_cal + " cal\nLink: "+ item_link + "\n\n"
+                                                            foodList += item
+                                                            console.log(item)
+                                                        }
+                                                        
+                                                        console.log(foodList)
+
+                                                        setTimeout(() => {
+                                                            fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
+                                                        }, 1500)
                                                     }
-                                                    
-                                                    console.log(foodList)
-
-                                                    setTimeout(() => {
-                                                        fbMessage(sender, `Here's a list of food items in your budget and within calorie intake around you: \n ${foodList}`)
-                                                    }, 1500)
                                                 } catch(error) {
                                                   console.error(error);
                                                 }
@@ -673,9 +709,9 @@ app.post('/webhook', (req, res) => {
                                               calorie = -100
                                             
                                         } else if ((calorie < 0 || isNaN(calorie)) && amount < 0) {
-                                            fbMessage(sender, `Sorry I didn't get your values, can you please repeat your money and calorie requirement again?`);
+                                            fbMessage(sender, `Sorry 😐 I didn't get your values, can you please repeat your money and calorie requirement again?`);
                                         } else if (calorie < 0 && amount >= 0) {
-                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in?`);
+                                            fbMessage(sender, `Cool, so you want to spend $${amount} on your food. How much maximum calories you want to take in? 🤔`);
                                         }
 
                                     }
@@ -700,7 +736,7 @@ app.post('/webhook', (req, res) => {
                             })
                             .catch((err) => {
                                 console.error('Oops! Got an error from Wit: ', err.stack || err);
-                                fbMessage(sender, `Sorry I didn't get you. Can you please repeat again?`);
+                                fbMessage(sender, `Sorry 😐 I didn't get you. Can you please repeat again?`);
                             })
                     }
                 }
@@ -770,7 +806,7 @@ console.log('Listening on :' + PORT + '...');
 //             let item_price = items[p]['fields']['price']
 //             let item_cal = items[p]['fields']['nf_calories']
 
-//             let item = "Item Name: " + item_name + "| Restaurant: " + item_brand + "| Price: " + item_price + "| Calories: " + item_cal + "\n"
+//             let item = "🍕 Item Name: " + item_name + "| Restaurant: " + item_brand + "| Price: " + item_price + "| Calories: " + item_cal + "\n"
 //             foodList += item
 //             console.log(item)
 //         }
@@ -778,7 +814,7 @@ console.log('Listening on :' + PORT + '...');
 //         console.log(foodList)
 
 //         // setTimeout(() => {
-//         //     fbMessage(sender, `Here's a list of food items in your budget and within calorie intake: \n ${foodList}`)
+//         //     fbMessage(sender, `🎉 Here's a list of food items in your budget and within calorie intake: \n ${foodList}`)
 //         // }, 1500)
 
 //         amount = -999

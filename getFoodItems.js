@@ -169,20 +169,27 @@ function getFoodItems(amount, calories) {
       if (err) return reject(err);
         dataParse = JSON.parse(data);
 
-        // console.log(amount, calories)
+        console.log(amount, calories)
 
         ans = knapsackCalorie(dataParse, calories)
-        // console.log(ans.subset)s
+        console.log(ans.subset)
     
-        setTimeout(() => {
-          ans = knapsackMoney(ans.subset, amount)
-          // console.log(ans.subset)
-          // return ans.subset
-          resolve(ans.subset), 2000
-        })
+        if (ans.subset.length > 0) {
+          setTimeout(() => {
+            ans = knapsackMoney(ans.subset, amount)
+            // console.log(ans.subset)
+            // return ans.subset
+            resolve(ans.subset), 2000
+          })
+        } else {
+          resolve([]), 2000
+        }
+
     });
   });
 }
+
+// getFoodItems(10, 30)
 
 
 
