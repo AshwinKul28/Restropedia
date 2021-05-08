@@ -2,8 +2,8 @@
     {
         "intent" : "greeting",
         "response" : [
-            "Hey hi, I'm Restropedia bot! I'm Here to take care of your diet within your spend capacity!",
-            "Hello, I'm Restropedia Bot, glad to serve you. I will take care of all your hunger needs.",
+            "Hey hi, I'm Skimping Diet bot! I'm Here to take care of your diet within your spend capacity!",
+            "Hello, I'm Skimping Diet Bot, glad to serve you. I will take care of all your hunger needs.",
             "Hi mate, Ask me anything you want to eat within your diet and spend range! I'm here to serve you!"
         ],
         "after_greeting_text" : [
@@ -15,7 +15,7 @@
         "intent" : "spend_capacity",
         "response" : [
             "",
-            "Hello, I'm Restropedia Bot, glad to serve you. I will take care of all your hunger needs",
+            "Hello, I'm Skimping Diet Bot, glad to serve you. I will take care of all your hunger needs",
             "Hi mate, Ask me anything you want to eat within your diet and spend range! I'm here to serve you!"
         ]
     },

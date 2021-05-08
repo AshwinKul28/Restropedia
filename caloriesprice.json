@@ -1,0 +1,615 @@
+[
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "516d9a42e3afed1038d004e0",
+        "_score": 4.0625877,
+        "fields": {
+            "item_id": "516d9a42e3afed1038d004e0",
+            "item_name": "Jr. Cheeseburger Deluxe",
+            "brand_name": "Wendy's",
+            "link": "https://www.wendys.com",
+            "price": 1.89,
+            "nf_calories": 340,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "521b95ca4a56d006d578b702",
+        "_score": 4.0625877,
+        "fields": {
+            "item_id": "521b95ca4a56d006d578b702",
+            "item_name": "Spicy Caesar Chicken Salad, Full Size",
+            "brand_name": "Wendy's",
+            "link": "https://www.wendys.com",
+            "price": 6.69,
+            "nf_calories": 720,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "521b95ca4a56d006d578b71a",
+        "_score": 4.0625877,
+        "fields": {
+            "item_id": "521b95ca4a56d006d578b71a",
+            "item_name": "Dave's Double",
+            "brand_name": "Wendy's",
+            "link": "https://www.wendys.com",
+            "price": 5.39,
+            "nf_calories": 810,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "521b95ca4a56d006d578b726",
+        "_score": 4.0625877,
+        "fields": {
+            "item_id": "521b95ca4a56d006d578b726",
+            "item_name": "Spicy Chicken Sandwich",
+            "brand_name": "Wendy's",
+            "link": "https://www.wendys.com",
+            "price": 4.99,
+            "nf_calories": 510,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd4030010cf",
+        "_score": 3.9428453,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd4030010cf",
+            "item_name": "Filet-O-Fish Sandwich",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 3.79,
+            "nf_calories": 380,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd4030010ab",
+        "_score": 3.9428453,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd4030010ab",
+            "item_name": "Chicken McNuggets, 6 Piece",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 3.50,
+            "nf_calories": 250,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "152152206994a479c9298d37",
+        "_score": 3.9428453,
+        "fields": {
+            "item_id": "152152206994a479c9298d37",
+            "item_name": "Quarter Pounder with Cheese Bacon",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 5.49,
+            "nf_calories": 630,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd4030010a7",
+        "_score": 2.6922665,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd4030010a7",
+            "item_name": "Cheeseburger",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 1.00,
+            "nf_calories": 300,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd4030010e5",
+        "_score": 2.6922665,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd4030010e5",
+            "item_name": "Hamburger",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 1.00,
+            "nf_calories": 250,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd4030010fd",
+        "_score": 2.6922665,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd4030010fd",
+            "item_name": "Hotcakes",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 2.39,
+            "nf_calories": 580,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc9e73fe3ffd403001130",
+        "_score": 2.6458242,
+        "fields": {
+            "item_id": "513fc9e73fe3ffd403001130",
+            "item_name": "McDouble",
+            "brand_name": "McDonald's",
+            "link": "https://www.mcdonalds.com",
+            "price": 1.39,
+            "nf_calories": 400,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc998927da704080048e6",
+        "_score": 1.8166877,
+        "fields": {
+            "item_id": "513fc998927da704080048e6",
+            "item_name": "French Fries",
+            "brand_name": "In-N-Out Burger",
+            "price": 1.60,
+            "nf_calories": 370,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc998927da704080048e0",
+        "_score": 1.8513308,
+        "fields": {
+            "item_id": "513fc998927da704080048e0",
+            "item_name": "Cheeseburger With Onion",
+            "brand_name": "In-N-Out Burger",
+            "link": "https://www.in-n-out.com",
+            "price": 2.40,
+            "nf_calories": 480,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "513fc998927da704080048dd",
+        "_score": 1.8773785,
+        "fields": {
+            "item_id": "513fc998927da704080048dd",
+            "item_name": "Hamburger With Onion",
+            "brand_name": "In-N-Out Burger",
+            "link": "https://www.in-n-out.com",
+            "price": 2.10,
+            "nf_calories": 390,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "32f186163883e3686adf6765",
+        "_score": 4.6673098,
+        "fields": {
+            "item_id": "32f186163883e3686adf6765",
+            "item_name": "Chips & Queso Blanco",
+            "brand_name": "Chipotle",
+            "link": "https://www.in-n-out.com",
+            "price": 3.95,
+            "nf_calories": 780,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "d3ea0835afde2cf6f9a5db8f",
+        "_score": 2.0947666,
+        "fields": {
+            "item_id": "d3ea0835afde2cf6f9a5db8f",
+            "item_name": "Rodeo Burger",
+            "brand_name": "Burger King",
+            "link": "https://www.bk.com",
+            "price": 1.00,
+            "nf_calories": 330,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "d3ea08354a84737d82e302b6",
+        "_score": 2.000587,
+        "fields": {
+            "item_id": "d3ea08354a84737d82e302b6",
+            "item_name": "Flame Grilled Burgers, Bacon King",
+            "brand_name": "Burger King",
+            "link": "https://www.bk.com",
+            "price": 5.99,
+            "nf_calories": 1150,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb8816176574f4ba68d99a",
+        "_score": 1.9344947,
+        "fields": {
+            "item_id": "23cb8816176574f4ba68d99a",
+            "item_name": "Deluxe Hand Tossed Pizza, Medium",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 13.99,
+            "nf_calories": 230,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb8816b0de695258d5a2b9",
+        "_score": 1.9344947,
+        "fields": {
+            "item_id": "23cb8816b0de695258d5a2b9",
+            "item_name": "Deluxe Hand Tossed Pizza, Small",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 11.99,
+            "nf_calories": 220,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb8816c38f5fab5dc76bc9",
+        "_score": 1.9344947,
+        "fields": {
+            "item_id": "23cb8816c38f5fab5dc76bc9",
+            "item_name": "ExtravaganZZa Hand Tossed Pizza, XLarge",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 15.99,
+            "nf_calories": 510,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb881602bcfd2cfc8f08f7",
+        "_score": 1.906636,
+        "fields": {
+            "item_id": "23cb881602bcfd2cfc8f08f7",
+            "item_name": "Ultimate Pepperoni Hand Tossed Pizza, Small",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 11.99,
+            "nf_calories": 250,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb881606aca038c4379e1f",
+        "_score": 1.906636,
+        "fields": {
+            "item_id": "23cb881606aca038c4379e1f",
+            "item_name": "Spinach & Feta Hand Tossed Pizza, Small",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 11.99,
+            "nf_calories": 220,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb88169370ff6ea76e3222",
+        "_score": 1.906636,
+        "fields": {
+            "item_id": "23cb8819370ff6ea76e3222",
+            "item_name": "Pacific Veggie Hand Tossed Pizza, Large",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 15.99,
+            "nf_calories": 310,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "32f12700872893c2fdf93a0f",
+        "_score": 1.906636,
+        "fields": {
+            "item_id": "32f12700872893c2fdf93a0f",
+            "item_name": "Buffalo Chicken Hand Tossed Pizza, XLarge",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 17.99,
+            "nf_calories": 450,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "d3ea727418c7ca940b220174",
+        "_score": 1.906636,
+        "fields": {
+            "item_id": "d3ea727418c7ca940b220174",
+            "item_name": "Chicken Taco Hand Tossed Pizza, Small",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 11.99,
+            "nf_calories": 380,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "23cb881624c0a7ecc590b3df",
+        "_score": 1.8762796,
+        "fields": {
+            "item_id": "23cb881624c0a7ecc590b3df",
+            "item_name": "MeatZZa Hand Tossed Pizza, Medium",
+            "brand_name": "Domino's",
+            "link": "https://www.dominos.com",
+            "price": 13.99,
+            "nf_calories": 270,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "463d0791eddeb47f84bffe7e",
+        "_score": 2.131418,
+        "fields": {
+            "item_id": "463d0791eddeb47f84bffe7e",
+            "item_name": "Crunchy Taco",
+            "brand_name": "Taco Bell",
+            "link": "https://www.tacobell.com",
+            "price": 1.19,
+            "nf_calories": 170,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "463d0791b8ddfd262810bbbc",
+        "_score": 1.9983346,
+        "fields": {
+            "item_id": "463d0791b8ddfd262810bbbc",
+            "item_name": "Soft Taco - Chicken",
+            "brand_name": "Taco Bell",
+            "link": "https://www.tacobell.com",
+            "price": 1.79,
+            "nf_calories": 160,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "463d0791bebfcf426f737fa9",
+        "_score": 1.9983346,
+        "fields": {
+            "item_id": "463d0791bebfcf426f737fa9",
+            "item_name": "Soft Taco - Beef",
+            "brand_name": "Taco Bell",
+            "link": "https://www.tacobell.com",
+            "price": 2.49,
+            "nf_calories": 180,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "463d0791ce23db7b78734e71",
+        "_score": 1.9770776,
+        "fields": {
+            "item_id": "463d0791ce23db7b78734e71",
+            "item_name": "Crunchy Taco Supreme",
+            "brand_name": "Taco Bell",
+            "link": "https://www.tacobell.com",
+            "price": 1.69,
+            "nf_calories": 190,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "5266a1249f05a39eb300885d",
+        "_score": 3.0106936,
+        "fields": {
+            "item_id": "5266a1249f05a39eb300885d",
+            "item_name": "Teriyaki Chicken",
+            "brand_name": "Panda Express",
+            "price": 4.20,
+            "nf_calories": 340,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "5aacbf128ce3a74a2b3680d3",
+        "_score": 1.6662259,
+        "fields": {
+            "item_id": "5aacbf128ce3a74a2b3680d3",
+            "item_name": "Salted Caramel, Cheese Cake Mix",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.pandaexpress.com",
+            "price": 12.95,
+            "nf_calories": 160,
+            "nf_total_fat": 1.5,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "c64021681308ac0c8c85210a",
+        "_score": 1.3596982,
+        "fields": {
+            "item_id": "c64021681308ac0c8c85210a",
+            "item_name": "Carrot Cake",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 8.50,
+            "nf_calories": 1720,
+            "nf_total_fat": 122,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "c6402168303d7b841c5339d4",
+        "_score": 1.1699497,
+        "fields": {
+            "item_id": "c6402168303d7b841c5339d4",
+            "item_name": "Linda's Fudge Cake",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 8.68,
+            "nf_calories": 1450,
+            "nf_total_fat": 66,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "c6402168fce7af1b9b8cbe92",
+        "_score": 1.1417359,
+        "fields": {
+            "item_id": "c6402168fce7af1b9b8cbe92",
+            "item_name": "Black-Out Cake",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 8.96,
+            "nf_calories": 1560,
+            "nf_total_fat": 85,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "54a2c60e129675453c96b54b",
+        "_score": 1.0467801,
+        "fields": {
+            "item_id": "54a2c60e129675453c96b54b",
+            "item_name": "Chocolate Cake, Cheesecake",
+            "brand_name": "The Cheesecake Factory Grocery",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 8.69,
+            "nf_calories": 440,
+            "nf_total_fat": 23,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "c640216837ee1a301bd9a690",
+        "_score": 1.0404661,
+        "fields": {
+            "item_id": "c640216837ee1a301bd9a690",
+            "item_name": "Ultimate Red Velvet Cake Cheesecake",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 8.69,
+            "nf_calories": 1580,
+            "nf_total_fat": 116,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    },
+    {
+        "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
+        "_type": "item",
+        "_id": "c6402168eed1c20bc7f14263",
+        "_score": 0.9748579,
+        "fields": {
+            "item_id": "c6402168eed1c20bc7f14263",
+            "item_name": "Chocolate Tower Truffle Cake",
+            "brand_name": "Cheesecake Factory",
+            "link": "https://www.thecheesecakefactory.com",
+            "price": 9.12,
+            "nf_calories": 1770,
+            "nf_total_fat": 111,
+            "nf_serving_size_qty": 1,
+            "nf_serving_size_unit": "serving"
+        }
+    }
+]
