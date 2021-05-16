@@ -9,7 +9,7 @@ A publically Available mssanger bot build during Facebook Refresh F8 2021 Hackat
   - uses Wit.ai powerful engine to extract sentiments.
 
 - Architecture Diagram:
-  ![diagram](./images/skimping-diet_arch)
+  [diagram](/images/skimping-diet_arch)
 
 - Watch our working demo on youtube [here](https://www.youtube.com/watch?v=aCJPjawnk6A)
 
