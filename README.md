@@ -8,8 +8,8 @@ A publically Available mssanger bot build during Facebook Refresh F8 2021 Hackat
   - Suggests nearby Restaurants.
   - uses Wit.ai powerful engine to extract sentiments.
 
-- Architecture Diagram:
-  [diagram](/images/skimping-diet_arch)
+- Architecture Diagram: <br>
+  ![image](images/skimping-diet_arch.png)
 
 - Watch our working demo on youtube [here](https://www.youtube.com/watch?v=aCJPjawnk6A)
 
