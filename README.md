@@ -11,8 +11,9 @@ A publically Available messanger bot build during Facebook Refresh F8 2021 Hacka
 - Architecture Diagram: <br>
   ![image](images/skimping-diet_arch.png)
 
+<hr>
 - Watch our working demo on youtube [here](https://www.youtube.com/watch?v=aCJPjawnk6A)
-- Want to talk to our bot it is live here : https://skimpindiet.herokuapp.com/
+- Want to talk to our bot? It is live here on heroku : https://skimpindiet.herokuapp.com/
 
 
 - Contributors:
